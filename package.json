@@ -1,0 +1,24 @@
+{
+  "name": "liri-node-app",
+  "version": "1.0.0",
+  "description": "hw npms",
+  "main": "liri.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacobc03/liri-node-app.git"
+  },
+  "author": "jacob cardillo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jacobc03/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/jacobc03/liri-node-app#readme",
+  "dependencies": {
+    "request": "^2.79.0",
+    "spotify": "^0.3.0",
+    "twitter": "^1.5.0"
+  }
+}
