@@ -1,5 +1,7 @@
 var request = require('request');
 var Twitter = require('twitter');
+var spotify = require('spotify');
+var fs = require ('fs');
 var keys = require('./keys.js');
 var keyWord = process.argv[2];
 
@@ -14,25 +16,18 @@ if (keyWord==="movie-this") {
   // if there were no errors and the response code was 200 (i.e. the request was successful)
   			if (!error && response.statusCode == 200) {
 			  	var body =JSON.parse(body);
-			    console.log(body.Title);
-			    console.log(body.Year);
-			    console.log(body.imdbRating);
-			    console.log(body.Country);
-			    console.log(body.Language);
-			    console.log(body.Plot);
-			    console.log(body.Actors);
-			    console.log(body.tomatoRating);
-			    console.log(body.tomatoURL);
+			    console.log("Title: "+body.Title);
+			    console.log("Year: "+body.Year);
+			    console.log("Rating: "+body.imdbRating);
+			    console.log("Country: "+body.Country);
+			    console.log("Language: "+body.Language);
+			    console.log("Plot: "+body.Plot);
+			    console.log("Actors: "+body.Actors);
+			    console.log("Tomato Rating: "+body.tomatoRating);
+			    console.log("Tomato URL: "+body.tomatoURL);
  			 }
 		});
 } 
-
-
-
-
-
-
-
 
 //Twitter
 if (keyWord === "my-tweets") {
@@ -58,4 +53,41 @@ if (keyWord === "my-tweets") {
   		}
 	});
 }
+
+//Spotify
+if (keyWord === "spotify-this-song") {
+	var songTitle=process.argv[3] || "The Sign";
+	songTitle.split(" ").join("+");
+ 
+	spotify.search({ type: 'track', query: songTitle }, function(err, data) {
+    	if ( err ) {
+        	console.log('Error occurred: ' + err);
+        	return;
+    	} else{
+    		
+			//Artist(s)
+			//The song's name
+			//A preview link of the song from Spotify
+			//The album that the song is from
+    	} 
+	});
+
+}
+
+
+fs.readFile("random.txt", "utf8", function(error, data){
+	
+
+
+
+});
+
+
+
+
+
+
+
+
+
 
