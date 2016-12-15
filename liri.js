@@ -8,8 +8,8 @@ var keyWord = process.argv[2];
 // run the following code whe movie-this is the keyword
 if (keyWord==="movie-this") {
 	// stores movie into movieTitle... When no movie selected default search is Mr. Nobody
-	var movieTitle=process.argv[3] || "Mr+Nobody";
-//	movieTitle.split(" ").join("+");
+	var movieTitle=process.argv[3] || "Mr Nobody";
+	movieTitle.split(" ").join("+");
 	var url ="http://www.omdbapi.com/?t="+movieTitle+"&y=&plot=short&r=json&tomatoes=true";
 	console.log(url);
 		request(url, function (error, response, body) {
@@ -57,13 +57,14 @@ if (keyWord === "my-tweets") {
 
 //Spotify
 if (keyWord === "spotify-this-song") {
-	var songTitle=process.argv[3] || "spotify:The Sign";
+	var songTitle=process.argv[3] || "The Sign";
  
 	spotify.search({ type: 'track', query: songTitle }, function(err, data) {
     	if ( err ) {
         	console.log('Error occurred: ' + err);
         	return;
     	} else{
+
 			console.log("Artist(s): "+data.tracks.items[0].album.artists[0].name);
 			
 			console.log("Song Name: "+data.tracks.items[0].name);
