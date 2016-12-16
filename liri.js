@@ -64,30 +64,46 @@ if (keyWord === "spotify-this-song") {
         	console.log('Error occurred: ' + err);
         	return;
     	} else{
-
-			console.log("Artist(s): "+data.tracks.items[0].album.artists[0].name);
+    		//used to shorten repeat code
+    		var data = data.tracks.items[0];
+    		
+			console.log("Artist(s): "+data.album.artists[0].name);
 			
-			console.log("Song Name: "+data.tracks.items[0].name);
+			console.log("Song Name: "+data.name);
 			
-			console.log("Link: "+data.tracks.items[0].artists[0].external_urls.spotify);
+			console.log("Link: "+data.artists[0].external_urls.spotify);
 			
-			console.log("Album: "+data.tracks.items[0].album.name);
+			console.log("Album: "+data.album.name);
     	} 
 	});
 
 }
-/*
+
 if (keyWord === "do-what-it-says") {
-	fs.readFile("random.txt", "utf8", function(error, data){
-		if (err) {
-			return console.log(err);
+	fs.readFile("random.text", "utf8", function(error, data){
+		if (error) {
+			return console.log(error);
 		}else{
-			console.log(data);
+			var randomSong = data;
+			var array = data.split(',');
+			
+			spotify.search({ type: 'track', query: array[1] }, function(err, data) {
+				//used to shorten repeat code
+				var data = data.tracks.items[0];
+				
+				console.log("Artist(s): "+data.album.artists[0].name);
+			
+				console.log("Song Name: "+data.name);
+			
+				console.log("Link: "+data.artists[0].external_urls.spotify);
+			
+				console.log("Album: "+data.album.name);
+			})
 		}
 	});
 }
 
-*/
+
 
 
 
